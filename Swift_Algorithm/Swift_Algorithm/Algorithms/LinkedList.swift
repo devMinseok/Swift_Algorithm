@@ -2,7 +2,7 @@
 //  LinkedList.swift
 //  Swift_Algorithm
 //
-//  Created by 강민석 on 2020/06/09.
+//  Created by 강민석 on 2020/08/18.
 //  Copyright © 2020 MinseokKang. All rights reserved.
 //
 
@@ -13,7 +13,7 @@ import Foundation
 //    public var students: [String] // 학생 이름 명단
 //    public var next: Node? // 노드가 가리키는 노드 (다음 노드)
 //    // 마지막 노드는 다음 노드가 nil 이기 때문에 옵셔널로 선언
-//    
+//
 //    public init (roomNumber: Int, students: String..., next: Node? = nil) {
 //
 //        self.roomNumber = roomNumber
@@ -36,7 +36,7 @@ import Foundation
 //
 //public func example(of description: String, action: () -> Void) {
 //    print("---Example of \(description)---")
-//    
+//
 //    action()
 //    // 두 번째 매개변수 실행시키기
 //    // 이 함수를 쓸 때는 클로져를 활용할 예정입니다. 그래서 매개변수에 함수 타입이 들어간 것.
@@ -50,11 +50,11 @@ import Foundation
 //    let node3 = Node(roomNumber: 403, students: "H", "I")
 //    let node4 = Node(roomNumber: 404, students: "J", "K", "L", "M")
 //    let node5 = Node(roomNumber: 405, students: "N", "O", "P", "Q")
-//    
+//
 //    node1.next = node2
 //    node2.next = node3
 //    node3.next = node4
 //    node4.next = node5
-//    
+//
 //    print(node1)
 //}
