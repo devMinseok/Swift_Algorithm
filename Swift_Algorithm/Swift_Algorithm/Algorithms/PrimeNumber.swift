@@ -6,7 +6,7 @@
 //  Copyright © 2020 MinseokKang. All rights reserved.
 //
 
-import Foundation
+//import Foundation
 
 //var isPrime = true
 //var primeNumber = [Int]()

@@ -6,7 +6,7 @@
 //  Copyright © 2020 MinseokKang. All rights reserved.
 //
 
-import Foundation
+//import Foundation
 
 //var firstNum = Int(readLine()!)!
 //var secondNum = Int(readLine()!)!

@@ -6,7 +6,7 @@
 //  Copyright © 2020 MinseokKang. All rights reserved.
 //
 
-import Foundation
+//import Foundation
 
 //public class Node { // Node 클래스를 <Value> 라는 Generics 타입으로
 //    public var roomNumber: Int // 방 번호
