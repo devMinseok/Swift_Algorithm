@@ -129,4 +129,54 @@ func rcopy() {
 
 //rcopy()
 
+// MARK: - 83p 연습문제 Q9 / 그 해 경과 일수와 그 해 남은 일 수 구하기
+
+let mDays = [
+    [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31],
+    [31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+]
+
+func isLeap(year: Int) -> Int {
+    // 윤년은 4로 나누어 떨어져야하고 100으로 나누어 떨어지면 안된다. 또는 400으로 나누어 떨어져야한다.
+    return ((year % 4 == 0) && (year % 100 != 0) || (year % 400 == 0)) ? 1 : 0
+}
+
+/// 그 해 경과 일 수
+func dayOfYear() {
+    print("그 해 경과 일 수를 구할 날짜를 yyyy.MM.dd 형식으로 입력해주세요.")
+    let input = readLine()!.components(separatedBy: ".")
+    
+    let year = Int(input[0])! // yyyy
+    let month = Int(input[1])! // MM
+    var day = Int(input[2])! // dd
+    
+    for i in 1..<month {
+        day += mDays[isLeap(year: year)][i - 1]
+    }
+    
+    print("그 해 \(day)일째입니다.")
+}
+
+//dayOfYear()
+
+/// 그 해 남은 일 수
+func leftDayOfYear() {
+    print("그 해 남은 일 수를 구할 날짜를 yyyy.MM.dd 형식으로 입력해주세요.")
+    let input = readLine()!.components(separatedBy: ".")
+    
+    let year = Int(input[0])! // yyyy
+    let month = Int(input[1])! // MM
+    var day = Int(input[2])! // dd
+    
+    let isLeapYear = isLeap(year: year)
+    
+    for i in 1..<month {
+        day += mDays[isLeapYear][i - 1]
+    }
+    
+    print("그 해 \((isLeapYear == 0 ? 365 : 366) - day)일 남았습니다.")
+}
+
+//leftDayOfYear()
+
 // MARK: -
