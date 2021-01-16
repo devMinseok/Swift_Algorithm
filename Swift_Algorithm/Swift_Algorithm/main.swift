@@ -81,3 +81,38 @@ func seqSearchScan() {
 }
 
 //seqSearchScan()
+
+
+// MARK: - 117p 연습문제 Q5 / 맨 앞의 요소를 찾는 이진검색
+
+func binSearchX() {
+    let arr = [1, 3, 5, 7, 7, 7, 7, 8, 8, 9, 9]
+    let key = 7
+    
+    var pl = 0
+    var pr = arr.count
+    var pc = 0
+    
+    repeat {
+        pc = (pl + pr) / 2
+        
+        if arr[pc] == key {
+            break
+        } else if arr[pc] < key {
+            pr = pc - 1
+        } else {
+            pl = pc + 1
+        }
+    } while pl <= pr
+    
+    for i in 0...pc {
+        if arr[i] == key {
+            print("\(i)인덱스에 key값이 있음")
+            return
+        }
+    }
+    
+    print("key 값을 찾지 못함")
+}
+
+//binSearchX()
