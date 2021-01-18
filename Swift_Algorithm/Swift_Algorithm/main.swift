@@ -155,3 +155,58 @@ print(sStack.push(.rightStack, 8))
 
 sStack.dump()
 */
+
+
+// MARK: - 146p 연습문제 Q4 / 큐
+class IntAryQueue {
+    var max: Int
+    var num: Int
+    var que: [Int]
+    
+    init(capacity: Int) {
+        self.max = capacity
+        self.num = 0
+        self.que = .init(repeating: -1, count: capacity)
+    }
+    
+    func enqueue(_ value: Int) -> Int {
+        self.que[num] = value
+        self.num += 1
+        return self.que[num - 1]
+    }
+    
+    func dequeue() -> Int {
+        let value = self.que[0]
+        
+        for i in 0..<num {
+            if self.que[i + 1] == -1 {
+                self.que[i] = -1
+                break
+            } else {
+                self.que[i] = self.que[i + 1]
+            }
+        }
+        return value
+    }
+    
+    func dump() {
+        for i in self.que {
+            print(i, terminator: " ")
+        }
+    }
+}
+
+let intAryQueue = IntAryQueue(capacity: 10)
+
+print(intAryQueue.enqueue(1))
+print(intAryQueue.enqueue(2))
+print(intAryQueue.enqueue(3))
+print(intAryQueue.enqueue(4))
+
+print(intAryQueue.dequeue())
+print(intAryQueue.dequeue())
+print(intAryQueue.dequeue())
+
+intAryQueue.dump()
+
+
