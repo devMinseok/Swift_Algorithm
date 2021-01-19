@@ -89,12 +89,12 @@ gStack.dump()
  */
 
 // MARK: - 144p 연습문제 Q3 / 하나의 배열을 공유하여 2개의 스택을 구현하는 Int형 스택 만들기
-enum StackDirection {
-    case leftStack
-    case rightStack
-}
-
 class SStack {
+    enum StackDirection {
+        case leftStack
+        case rightStack
+    }
+    
     var max: Int
     
     var lPtr: Int
@@ -196,6 +196,7 @@ class IntAryQueue {
     }
 }
 
+/*
 let intAryQueue = IntAryQueue(capacity: 10)
 
 print(intAryQueue.enqueue(1))
@@ -208,5 +209,131 @@ print(intAryQueue.dequeue())
 print(intAryQueue.dequeue())
 
 intAryQueue.dump()
+*/
 
+// MARK: - 160p 연습문제 Q5 / 큐안의 데이터를 검색하여 해당 값이 몇 번째에 있는지 출력
+class IntQueue {
+    enum QueueError: Error {
+        case empty
+        case overflow
+    }
+    
+    var max: Int
+    var front: Int
+    var rear: Int
+    var num: Int
+    var que: [Int]
+    
+    init(capacity: Int) {
+        self.num = 0
+        self.front = 0
+        self.rear = 0
+        self.max = capacity
+        
+        self.que = .init(repeating: -1, count: capacity)
+    }
+    
+    func enqueue(_ value: Int) throws -> Int {
+        if num >= max {
+            throw QueueError.overflow
+        }
+        
+        que[rear] = value
+        rear += 1
+        num += 1
+        
+        if rear == max {
+            rear = 0
+        }
+        
+        return value
+    }
+    
+    func dequeue() throws -> Int{
+        if num <= 0 {
+            throw QueueError.empty
+        }
+        
+        let value = que[front]
+        front += 1
+        num -= 1
+        
+        if front == max {
+            front = 0
+        }
+        
+        return value
+    }
+    
+    func indexOf(_ value: Int) -> Int {
+        for i in 0..<num {
+            let idx = (i + front) % max
+            if que[idx] == value {
+                return idx
+            }
+        }
+        return -1
+    }
+    
+    func search(_ value: Int) -> Int {
+        var searchIdx = -1
+        for i in 0..<num {
+            let idx = (i + front) % max
+            if que[idx] == value {
+                searchIdx = idx
+                break
+            }
+        }
+        
+        if searchIdx == -1 {
+            return -1
+        }
+        
+        var num = 0
+        
+        if front <= searchIdx {
+            for _ in front...searchIdx {
+                num += 1
+            }
+        } else {
+            for _ in front..<max {
+                num += 1
+            }
+            for _ in 0...searchIdx {
+                num += 1
+            }
+        }
+        return num
+    }
+}
 
+/*
+let intQueue = IntQueue(capacity: 12)
+
+print(try intQueue.enqueue(1))
+print(try intQueue.enqueue(2))
+print(try intQueue.enqueue(3))
+print(try intQueue.enqueue(4))
+print(try intQueue.enqueue(5))
+print(try intQueue.enqueue(6))
+print(try intQueue.enqueue(7))
+print(try intQueue.enqueue(35))
+print(try intQueue.enqueue(56))
+print(try intQueue.enqueue(24))
+print(try intQueue.enqueue(68))
+print(try intQueue.enqueue(95))
+
+print(try intQueue.dequeue())
+print(try intQueue.dequeue())
+print(try intQueue.dequeue())
+print(try intQueue.dequeue())
+print(try intQueue.dequeue())
+print(try intQueue.dequeue())
+print(try intQueue.dequeue())
+
+print(try intQueue.enqueue(73))
+print(try intQueue.enqueue(19))
+
+// 검색후 몇 번째 인지 출력
+print(intQueue.search(19))
+*/
