@@ -17,6 +17,7 @@
 		F2762A2624EB81DA00CB6434 /* Sort.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2762A2524EB81DA00CB6434 /* Sort.swift */; };
 		F2762A2824EB81EE00CB6434 /* Toss.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2762A2724EB81EE00CB6434 /* Toss.swift */; };
 		F2A4CB1225A4706E006E7023 /* dgsw.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A4CB1125A4706E006E7023 /* dgsw.swift */; };
+		F2AED0C125B82F6D00DD8F5B /* 04_Stack&Queue.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2AED0C025B82F6D00DD8F5B /* 04_Stack&Queue.swift */; };
 		F2BAE53725B43FBA00F27789 /* 03_Search.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2BAE53625B43FBA00F27789 /* 03_Search.swift */; };
 		F2EB3ABB25B1BEF600A20BFA /* 02_BasicDataStructure.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2EB3ABA25B1BEF600A20BFA /* 02_BasicDataStructure.swift */; };
 /* End PBXBuildFile section */
@@ -45,6 +46,7 @@
 		F2762A2524EB81DA00CB6434 /* Sort.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sort.swift; sourceTree = "<group>"; };
 		F2762A2724EB81EE00CB6434 /* Toss.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Toss.swift; sourceTree = "<group>"; };
 		F2A4CB1125A4706E006E7023 /* dgsw.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = dgsw.swift; sourceTree = "<group>"; };
+		F2AED0C025B82F6D00DD8F5B /* 04_Stack&Queue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "04_Stack&Queue.swift"; sourceTree = "<group>"; };
 		F2BAE53625B43FBA00F27789 /* 03_Search.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = 03_Search.swift; sourceTree = "<group>"; };
 		F2EB3ABA25B1BEF600A20BFA /* 02_BasicDataStructure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = 02_BasicDataStructure.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -107,6 +109,7 @@
 			children = (
 				F2EB3ABA25B1BEF600A20BFA /* 02_BasicDataStructure.swift */,
 				F2BAE53625B43FBA00F27789 /* 03_Search.swift */,
+				F2AED0C025B82F6D00DD8F5B /* 04_Stack&Queue.swift */,
 			);
 			path = DoitAlgorithm;
 			sourceTree = "<group>";
@@ -176,6 +179,7 @@
 				F2762A2024EB817500CB6434 /* GCD.swift in Sources */,
 				F2762A1E24EB815600CB6434 /* Fibonacci.swift in Sources */,
 				F2762A1224EB689200CB6434 /* main.swift in Sources */,
+				F2AED0C125B82F6D00DD8F5B /* 04_Stack&Queue.swift in Sources */,
 				F2EB3ABB25B1BEF600A20BFA /* 02_BasicDataStructure.swift in Sources */,
 				F2762A2624EB81DA00CB6434 /* Sort.swift in Sources */,
 				F2762A2824EB81EE00CB6434 /* Toss.swift in Sources */,
