@@ -58,3 +58,29 @@ func gcdArray(arr: [Int]) {
 }
 
 //gcdArray(arr: [22, 8, 4, 2])
+
+
+// MARK: - 172p 연습문제 Q4 / recur2 메서드를 보고 하향식 분석과 상향식 분석 하기
+func recur2(_ n: Int) {
+    if n > 0 {
+        recur2(n - 2)
+        print(n)
+        recur2(n - 1)
+    }
+}
+
+//recur2(4)
+
+/* recur2(4)
+ 상향식 분석
+ recur2(-1): 아무것도 하지않음
+ recur2(0): 아무것도 하지않음
+ recur2(1): recur2(-1) 1️⃣ recur2(0) => 1️⃣
+ recur2(2): recur2(0) 2️⃣ recur2(1) => 2️⃣ 1
+ recur2(3): recur2(1) 3️⃣ recur2(2) => 1 3️⃣ 2 1
+ recur2(4): recur2(2) 4️⃣ recur2(3) => 2 1 4️⃣ 1 3 2 1
+ 
+ 즉, recur2(4)의 결과는 2 1 4 1 3 2 1
+ 
+ 하향식 분석은 생략...
+ */
