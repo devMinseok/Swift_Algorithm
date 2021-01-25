@@ -84,3 +84,52 @@ func recur2(_ n: Int) {
  
  하향식 분석은 생략...
  */
+
+// MARK: - 196p 연습문제 Q8 / 8퀸 알고리즘
+class Queen {
+    var flagA = Array.init(repeating: false, count: 8) // 행
+    var flagB = Array.init(repeating: false, count: 15) // / 대각선 | j행 i열의 값은 i + j
+    var flagC = Array.init(repeating: false, count: 15) // \ 대각선 | j행 i열의 값은 i - j + 7
+    
+    var pos = Array.init(repeating: 0, count: 8)
+    
+    func posPrint() {
+        for i in 0..<8 {
+            for j in 0..<8 {
+                if j == pos[i] {
+                    print("🔳", terminator: " ")
+                } else {
+                    print("⬜️", terminator: " ")
+                }
+            }
+            print()
+        }
+        print()
+    }
+    
+    func set(_ i: Int) {
+        for j in 0..<8 {
+            if flagA[j] == false && flagB[i + j] == false && flagC[i - j + 7] == false {
+                pos[i] = j
+                if i == 7 {
+                    posPrint()
+                } else {
+                    flagA[j] = true
+                    flagB[i + j] = true
+                    flagC[i - j + 7] = true
+                    
+                    set(i + 1)
+                    
+                    flagA[j] = false
+                    flagB[i + j] = false
+                    flagC[i - j + 7] = false
+                }
+            }
+        }
+    }
+}
+
+/*
+ let queen = Queen()
+ queen.set(0)
+ */
