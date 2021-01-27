@@ -22,7 +22,7 @@ class BubbleSort {
         arr[idx2] = temp
     }
     
-    func bubbleSort() {
+    func bubbleSortVer1() {
         let n = arr.count
         for i in 0..<(n - 1) {
             for j in 0..<((n - 1) - i) {
@@ -33,15 +33,30 @@ class BubbleSort {
         }
     }
     
+    func bubbleSortVer2() {
+        let n = arr.count
+        
+        for i in 0..<(n - 1) {
+            var flag = false
+            for j in 0..<((n - 1) - i) {
+                if arr[j] > arr[j + 1] {
+                    flag = true
+                    self.swap(j, j + 1)
+                }
+            }
+            if flag == false {
+                break
+            }
+        }
+    }
+    
     func dump() {
         print(self.arr)
     }
 }
 
 /*
-let bubbleSort = BubbleSort(arr: [3, 2, 1, 6, 7, 8, 5, 9, 4])
-bubbleSort.bubbleSort()
+let bubbleSort = BubbleSort(arr: [1, 3, 4, 6, 7, 8, 9])
+bubbleSort.bubbleSortVer2()
 bubbleSort.dump()
  */
-
-
