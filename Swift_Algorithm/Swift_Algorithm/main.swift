@@ -60,3 +60,49 @@ let bubbleSort = BubbleSort(arr: [1, 3, 4, 6, 7, 8, 9])
 bubbleSort.bubbleSortVer2()
 bubbleSort.dump()
  */
+
+// MARK: - 223p 연습문제 Q9 | 셸 정렬
+class ShellSort {
+    
+    var arr: [Int]
+    var moveCount = 0
+    
+    init(arr: [Int]) {
+        self.arr = arr
+    }
+    
+    func shellSort() {
+        var i = arr.count / 2
+        
+        while i > 0 {
+            for pos in 0..<i {
+                insertionSort(start: pos, gap: i)
+            }
+            i /= 2
+        }
+    }
+    
+    func insertionSort(start: Int, gap: Int) {
+        for i in stride(from: (start + gap), to: arr.count, by: gap) {
+            let currentValue = arr[i]
+            var pos = i
+            
+            while pos >= gap && arr[pos - gap] > currentValue {
+                arr[pos] = arr[pos - gap]
+                pos -= gap
+                self.moveCount += 1
+            }
+            
+            arr[pos] = currentValue
+        }
+    }
+    
+    func dump() {
+        print("정렬된 배열: \(arr)")
+        print("이동 횟수: \(moveCount)")
+    }
+}
+
+let shellSort = ShellSort(arr: [8, 1, 4, 2, 7, 6, 3, 5])
+shellSort.shellSort()
+shellSort.dump()
