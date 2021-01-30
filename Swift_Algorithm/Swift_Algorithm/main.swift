@@ -103,6 +103,43 @@ class ShellSort {
     }
 }
 
+/*
 let shellSort = ShellSort(arr: [8, 1, 4, 2, 7, 6, 3, 5])
 shellSort.shellSort()
 shellSort.dump()
+ */
+
+class Partition {
+    
+    func swap(_ idx1: Int, _ idx2: Int) {
+        let temp = arr[idx1]
+        arr[idx1] = arr[idx2]
+        arr[idx2] = temp
+    }
+    
+    var arr: [Int]
+    var n: Int
+    var pl: Int
+    var pr: Int
+    var x: Int
+    
+    init(arr: [Int]) {
+        self.arr = arr
+        self.n = arr.count
+        self.pl = 0
+        self.pr = n - 1
+        self.x = n / 2
+    }
+    
+    func partition() {
+        repeat {
+            while pl < x { pl += 1 }
+            while pr > x { pr -= 1 }
+        } while
+        
+        
+        
+    }
+    
+    
+}
