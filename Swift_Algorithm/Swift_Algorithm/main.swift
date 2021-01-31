@@ -110,7 +110,6 @@ shellSort.dump()
  */
 
 class Partition {
-    
     func swap(_ idx1: Int, _ idx2: Int) {
         let temp = arr[idx1]
         arr[idx1] = arr[idx2]
@@ -128,18 +127,98 @@ class Partition {
         self.n = arr.count
         self.pl = 0
         self.pr = n - 1
-        self.x = n / 2
+        self.x = arr[n / 2]
     }
     
     func partition() {
         repeat {
-            while pl < x { pl += 1 }
-            while pr > x { pr -= 1 }
-        } while
+            while arr[pl] < x { pl += 1 }
+            while arr[pr] > x { pr -= 1 }
+            if pl <= pr {
+                swap(pl, pr)
+                pl += 1
+                pr -= 1
+            }
+        } while pl <= pr
         
+        print("피벗의 값은 \(x)입니다.")
         
+        print("피벗 이하의 그룹: ")
+        for i in 0...(pl - 1) {
+            print(arr[i], terminator: " ")
+        }
+        print()
         
+        if pl > (pr + 1) {
+            print("피벗과 일치하는 그룹: ")
+            for i in (pr + 1)...(pl - 1) {
+                print(arr[i], terminator: " ")
+            }
+            print()
+        }
+        
+        print("피벗 이상의 그룹: ")
+        for i in (pr + 1)..<n {
+            print(arr[i], terminator: " ")
+        }
+    }
+}
+
+//let partition = Partition(arr: [1, 8, 7, 4, 5, 2, 6, 3, 9])
+//partition.partition()
+
+// MARK: - 퀵 정렬
+class QuickSort {
+    func swap(_ idx1: Int, _ idx2: Int) {
+        let temp = arr[idx1]
+        arr[idx1] = arr[idx2]
+        arr[idx2] = temp
     }
     
+    var arr: [Int]
+    var n: Int
     
+    init(arr: [Int]) {
+        self.arr = arr
+        self.n = arr.count
+    }
+    
+    func quickSort(left: Int, right: Int) {
+        var pl = left
+        var pr = right
+        let x = arr[(pl + pr) / 2]
+        
+        print("arr[\(left)] ~ arr[\(right)] : { ", terminator: "")
+        for i in left..<right {
+            print(arr[i], terminator: ", ")
+        }
+        print("\(arr[right]) }")
+        
+        repeat {
+            while arr[pl] < x { pl += 1 }
+            while arr[pr] > x { pr -= 1 }
+            if pl <= pr {
+                swap(pl, pr)
+                pl += 1
+                pr -= 1
+            }
+        } while pl <= pr
+        
+        if left < pr {
+            quickSort(left: left, right: pr)
+        }
+        
+        if right > pl {
+            quickSort(left: pl, right: right)
+        }
+    }
+    
+    func dump() {
+        print(arr)
+    }
 }
+
+let arr = [5, 8, 4, 2, 6, 1, 3, 9, 7]
+let quickSort = QuickSort(arr: arr)
+quickSort.quickSort(left: 0, right: arr.count - 1)
+quickSort.dump()
