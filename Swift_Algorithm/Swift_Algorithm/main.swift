@@ -56,9 +56,9 @@ class BubbleSort {
 }
 
 /*
-let bubbleSort = BubbleSort(arr: [1, 3, 4, 6, 7, 8, 9])
-bubbleSort.bubbleSortVer2()
-bubbleSort.dump()
+ let bubbleSort = BubbleSort(arr: [1, 3, 4, 6, 7, 8, 9])
+ bubbleSort.bubbleSortVer2()
+ bubbleSort.dump()
  */
 
 // MARK: - 223p 연습문제 Q9 | 셸 정렬
@@ -104,9 +104,9 @@ class ShellSort {
 }
 
 /*
-let shellSort = ShellSort(arr: [8, 1, 4, 2, 7, 6, 3, 5])
-shellSort.shellSort()
-shellSort.dump()
+ let shellSort = ShellSort(arr: [8, 1, 4, 2, 7, 6, 3, 5])
+ shellSort.shellSort()
+ shellSort.dump()
  */
 
 class Partition {
@@ -218,7 +218,58 @@ class QuickSort {
     }
 }
 
-let arr = [5, 8, 4, 2, 6, 1, 3, 9, 7]
-let quickSort = QuickSort(arr: arr)
-quickSort.quickSort(left: 0, right: arr.count - 1)
-quickSort.dump()
+/*
+ let arr = [5, 8, 4, 2, 6, 1, 3, 9, 7]
+ let quickSort = QuickSort(arr: arr)
+ quickSort.quickSort(left: 0, right: arr.count - 1)
+ quickSort.dump()
+ */
+
+class MergeSort {
+    var buff: [Int]
+    
+    func __mergeSort(_ a: inout [Int], _ left: Int, _ right: Int) {
+        if left < right {
+            var i = 0
+            let center = (left + right) / 2
+            var p = 0
+            var j = 0
+            var k = left
+            
+            __mergeSort(&a, left, center)
+            __mergeSort(&a, center + 1, right)
+            
+            i = left
+            for _ in left...center {
+                buff[p++] = a[i++]
+            }
+            
+            while i <= right && j < p {
+                a[k++] = (buff[j] <= a[i]) ? buff[j++] : a[i++]
+            }
+            
+            while j < p {
+                a[k++] = buff[j++]
+            }
+            
+            print(a)
+        }
+    }
+    
+    func mergeSort(_ a: inout [Int], _ n: Int) {
+        __mergeSort(&a, 0, n - 1)
+    }
+    
+    init() {
+        var x = [22, 5, 11, 32, 120, 68, 70]
+        self.buff = Array(repeating: -1, count: x.count)
+        
+        mergeSort(&x, x.count)
+        
+        for (index, element) in x.enumerated() {
+            print("x[\(index)] = \(element)")
+        }
+    }
+}
+
+//MergeSort()
