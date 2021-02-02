@@ -225,6 +225,7 @@ class QuickSort {
  quickSort.dump()
  */
 
+// MARK: - 병합 정렬
 class MergeSort {
     var buff: [Int]
     
@@ -273,3 +274,61 @@ class MergeSort {
 }
 
 //MergeSort()
+
+// MARK: - 힙 정렬
+class HeapSort {
+    func swap(_ arr: inout [Int], _ idx1: Int, _ idx2: Int) {
+        let temp = arr[idx1]
+        arr[idx1] = arr[idx2]
+        arr[idx2] = temp
+    }
+    
+    func downHeap(_ arr: inout [Int], _ left: Int, _ right: Int) {
+        let temp = arr[left] // root
+        var child = 1 // 큰 값을 가진 노드
+        var parent = left // 부모
+        
+        /*
+         <힙 공식>
+         i의 부모: (i - 1) / 2
+         i의 왼쪽 자식: (i * 2) + 1
+         i의 오른쪽 자식: (i * 2) + 2
+         */
+        while parent < (right + 1) / 2 {
+            let cl = parent * 2 + 1 // 왼쪽 자식
+            let cr = cl + 1 // 오른쪽 자식
+            child = (cr <= right && arr[cr] > arr[cl] ? cr : cl)
+            if temp >= arr[child] {
+                break
+            }
+            arr[parent] = arr[child]
+            
+            parent = child
+        }
+        
+        arr[parent] = temp
+        print(arr)
+    }
+    
+    func heapSort(arr: inout [Int], n: Int) {
+        for i in stride(from: ((n - 1) / 2), through: 0, by: -1) { // arr[i] ~ arr[n - 1]를 힙으로 만들기
+            downHeap(&arr, i, n - 1)
+        }
+        
+        for i in stride(from: n - 1, to: 0, by: -1) {
+            swap(&arr, 0, i) // 가장 큰 요소와 아직 정렬되지 않은 부분의 마지막 요소를 교환
+            downHeap(&arr, 0, i - 1) // a[0] ~ a[i - 1]을 힙으로 만듭니다.
+        }
+    }
+    
+    init() {
+        var arr = [22, 5, 11, 32, 120, 68, 70]
+        heapSort(arr: &arr, n: arr.count)
+        
+        for (index, element) in arr.enumerated() {
+            print("arr[\(index)] = \(element)")
+        }
+    }
+}
+
+HeapSort()
