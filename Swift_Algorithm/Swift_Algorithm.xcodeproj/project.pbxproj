@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F21F67D125CA923E00E96C05 /* 06_Sort.swift in Sources */ = {isa = PBXBuildFile; fileRef = F21F67D025CA923E00E96C05 /* 06_Sort.swift */; };
 		F2762A1224EB689200CB6434 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2762A1124EB689200CB6434 /* main.swift */; };
 		F2762A1924EB76BC00CB6434 /* ColorPaper(E).swift in Sources */ = {isa = PBXBuildFile; fileRef = F2762A1824EB76BC00CB6434 /* ColorPaper(E).swift */; };
 		F2762A1B24EB772800CB6434 /* ColorPaper(M).swift in Sources */ = {isa = PBXBuildFile; fileRef = F2762A1A24EB772800CB6434 /* ColorPaper(M).swift */; };
@@ -37,6 +38,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		F21F67D025CA923E00E96C05 /* 06_Sort.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = 06_Sort.swift; sourceTree = "<group>"; };
 		F2762A0E24EB689200CB6434 /* Swift_Algorithm */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Swift_Algorithm; sourceTree = BUILT_PRODUCTS_DIR; };
 		F2762A1124EB689200CB6434 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		F2762A1824EB76BC00CB6434 /* ColorPaper(E).swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ColorPaper(E).swift"; sourceTree = "<group>"; };
@@ -116,6 +118,7 @@
 				F2BAE53625B43FBA00F27789 /* 03_Search.swift */,
 				F2AED0C025B82F6D00DD8F5B /* 04_Stack&Queue.swift */,
 				F27BC5B525BECA6C00C35DB9 /* 05_RecursiveAlgorithm.swift */,
+				F21F67D025CA923E00E96C05 /* 06_Sort.swift */,
 			);
 			path = DoitAlgorithm;
 			sourceTree = "<group>";
@@ -183,6 +186,7 @@
 				F2BAE53725B43FBA00F27789 /* 03_Search.swift in Sources */,
 				F2762A2224EB81A800CB6434 /* LinkedList.swift in Sources */,
 				F2762A2024EB817500CB6434 /* GCD.swift in Sources */,
+				F21F67D125CA923E00E96C05 /* 06_Sort.swift in Sources */,
 				F2762A1E24EB815600CB6434 /* Fibonacci.swift in Sources */,
 				F2762A1224EB689200CB6434 /* main.swift in Sources */,
 				F2AED0C125B82F6D00DD8F5B /* 04_Stack&Queue.swift in Sources */,
