@@ -331,4 +331,54 @@ class HeapSort {
     }
 }
 
-HeapSort()
+//HeapSort()
+
+// MARK: - 도수 정렬
+class FSort {
+    
+    let max: Int
+    
+    func fSort(arr: inout [Int]) {
+        let n = arr.count
+        var f = Array(repeating: 0, count: max + 1) // 도수분포표 -> 누적도수분포표
+        var b = Array(repeating: 0, count: n) // 작업용 배열
+        
+        // #1 각 점수의 도수분포표 만들기
+        // 인덱스: 점수, 요소: 각 인덱스(점수)의 개수
+        for i in 0..<n {
+            f[arr[i]] += 1
+        }
+        
+        // #2 도수분포표를 누적도수분포표로 만들기
+        // 인덱스: 점수, 요소: 0 ~ i 까지의 점수의 개수 (누적)
+        for i in 1...max {
+            f[i] += f[i - 1]
+        }
+        
+        // #3 arr배열을 스캔하여 각 점수당 누적도수분포표를 대조하여 작업용 배열에 값을 넣음
+        for i in stride(from: n - 1, through: 0, by: -1) {
+            let a = f[arr[i]]-- // 0 ~ arr[i] 까지 점수를 맞은 모든학생의 수
+            b[a - 1] = arr[i]
+        }
+        
+        // #4 정렬된 값이 저장된 작업용 배열의 값을 arr배열로 복사
+        for i in 0..<n {
+            arr[i] = b[i]
+        }
+    }
+    
+    init() {
+        var arr = [5, 7, 0, 2, 4, 10, 3, 1, 3, 13] // 인덱스: 학생번호, 요소: 학생의 점수
+        
+        var maxScore = 0
+        for i in arr {
+            maxScore = maxScore < i ? i : maxScore
+        }
+        self.max = maxScore
+        
+        fSort(arr: &arr)
+        print(arr)
+    }
+}
+
+//FSort()
