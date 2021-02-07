@@ -8,23 +8,25 @@
 
 import Foundation
 
-// MARK: - 증감연산자 구현
+// MARK: - 증감연산자
 extension Int {
     mutating func increase() {
-        self+=1
+        self += 1
     }
-
+    
     mutating func decrease() {
-        self-=1
+        self -= 1
     }
 }
 
-postfix func ++ (number: inout Int) -> Int {
+@discardableResult
+postfix func ++(number: inout Int) -> Int {
     number.increase()
     return number - 1
 }
 
-postfix func -- (number: inout Int) -> Int {
+@discardableResult
+postfix func --(number: inout Int) -> Int {
     number.decrease()
     return number + 1
 }
