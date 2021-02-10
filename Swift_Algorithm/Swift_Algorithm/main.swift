@@ -19,7 +19,12 @@ class LinkedList<T> {
         }
     }
     
-    private var head: Node<T> // 머리 노드
-    private var crnt: Node<T> // 선택 노드
+    private var head: Node<T>? // 머리 노드
+    private var crnt: Node<T>? // 선택 노드
+    
+    init() {
+        head = nil
+        crnt = nil
+    }
     
 }
