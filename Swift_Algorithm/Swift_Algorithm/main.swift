@@ -8,6 +8,7 @@
 
 import Foundation
 
+// MARK: - 연결리스트 (포인터)
 class LinkedList<T: Equatable> {
     class Node<T>: Equatable {
         static func == (lhs: Node<T>, rhs: Node<T>) -> Bool {
@@ -155,6 +156,7 @@ class LinkedList<T: Equatable> {
 }
 
 
+// MARK: - 연결리스트 (tail 추가)
 class LinkedListT<T: Equatable> {
     class Node<T>: Equatable {
         static func == (lhs: Node<T>, rhs: Node<T>) -> Bool {
@@ -304,3 +306,192 @@ class LinkedListT<T: Equatable> {
         }
     }
 }
+
+
+// MARK: - 연결리스트 (커서)
+class AryLinkedList<T> {
+    
+    class Node<T> {
+        var data: T!
+        var next: Int!
+        var dnext: Int!
+        
+        func set(_ data: T, _ next: Int) {
+            self.data = data
+            self.next = next
+        }
+    }
+    
+    var n: [Node<T>]
+    var size: Int
+    var max: Int
+    var head: Int
+    var crnt: Int
+    var deleted: Int
+    let NULL = -1
+    
+    init(capacity: Int) {
+        head = NULL
+        crnt = NULL
+        max = NULL
+        deleted = NULL
+        
+        n = .init(repeating: Node(), count: capacity)
+        size = capacity
+    }
+    
+    func getInsertIndex() -> Int {
+        if deleted == NULL {
+            if max < size {
+                max++
+                return max
+            } else {
+                return NULL
+            }
+        } else {
+            var rec = deleted
+            deleted = n[rec].dnext
+            return rec
+        }
+    }
+    
+    func deleteIndex(idx: Int) {
+        if deleted == NULL {
+            deleted = idx
+            n[idx].dnext = NULL
+        } else {
+            var rec = deleted
+            deleted = idx
+            n[rec].dnext = rec
+        }
+    }
+    
+    func search(obj: T) -> T? {
+        var ptr = head
+        
+        while ptr != NULL {
+            if n[ptr].data == 0 {
+                crnt = ptr
+                return n[ptr].data
+            }
+            ptr = n[ptr].next
+        }
+        return nil
+    }
+    
+    func addFirst(obj: T) {
+        var ptr = head
+        var rec = getInsertIndex()
+        if rec != NULL {
+            head = rec
+            crnt = rec
+            n[head].set(obj, ptr)
+        }
+    }
+    
+    func addLast(obj: T) {
+        if head == NULL {
+            addFirst(obj: obj)
+        } else {
+            var ptr = head
+            while n[ptr].next != NULL {
+                ptr = n[ptr].next
+                var rec = getInsertIndex()
+                if rec != NULL {
+                    n[ptr].next = rec
+                    crnt = rec
+                    n[rec].set(obj, NULL)
+                }
+            }
+        }
+    }
+    
+    func removeFirst() {
+        if head != NULL {
+            var ptr = n[head].next
+            deleteIndex(idx: head)
+            head = ptr
+            crnt = ptr
+        }
+    }
+    
+    func removeLast() {
+        if head != NULL {
+            if n[head].next == NULL {
+                removeFirst()
+            } else {
+                var ptr = head
+                var pre = head
+                
+                while n[ptr].next != NULL {
+                    pre = ptr
+                    ptr = n[ptr].next
+                }
+                n[pre].next = NULL
+                deleteIndex(idx: pre)
+                crnt = pre
+            }
+        }
+    }
+    
+    func remove(p: Int) {
+        if head != NULL {
+            if p == head {
+                removeFirst()
+            } else {
+                var ptr = head
+                
+                while n[ptr].next != p {
+                    ptr = n[ptr].next
+                    if ptr == NULL {
+                        return
+                    }
+                }
+                n[ptr].next = NULL
+                deleteIndex(idx: ptr)
+                n[ptr].next = n[p].next
+                crnt = ptr
+            }
+        }
+    }
+    
+    func removeCurrentNode() {
+        remove(p: crnt)
+    }
+    
+    
+    func clear() {
+        while(head != NULL) {
+            removeLast()
+        }
+        crnt = NULL
+    }
+    
+    
+    func next() -> Bool {
+        if crnt == NULL || n[crnt].next == NULL {
+            return false
+        }
+        crnt = n[crnt].next
+        return true
+    }
+    
+    func printCurrentNode() {
+        if crnt == NULL {
+            print("선택 노드가 없습니다.")
+        } else {
+            print(n[crnt].data)
+        }
+    }
+    
+    func dump() {
+        var ptr = head
+        
+        while ptr != NULL {
+            print(n[ptr].data)
+            ptr = n[ptr].next
+        }
+    }
+}
+
+ 
