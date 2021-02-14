@@ -309,9 +309,9 @@ class LinkedListT<T: Equatable> {
 
 
 // MARK: - 연결리스트 (커서)
-class AryLinkedList<T> {
+class AryLinkedList<T: Equatable> {
     
-    class Node<T> {
+    class Node {
         var data: T!
         var next: Int!
         var dnext: Int!
@@ -322,7 +322,7 @@ class AryLinkedList<T> {
         }
     }
     
-    var n: [Node<T>]
+    var n: [Node]
     var size: Int
     var max: Int
     var head: Int
@@ -349,7 +349,7 @@ class AryLinkedList<T> {
                 return NULL
             }
         } else {
-            var rec = deleted
+            let rec = deleted
             deleted = n[rec].dnext
             return rec
         }
@@ -360,7 +360,7 @@ class AryLinkedList<T> {
             deleted = idx
             n[idx].dnext = NULL
         } else {
-            var rec = deleted
+            let rec = deleted
             deleted = idx
             n[rec].dnext = rec
         }
@@ -370,7 +370,7 @@ class AryLinkedList<T> {
         var ptr = head
         
         while ptr != NULL {
-            if n[ptr].data == 0 {
+            if obj == n[ptr].data {
                 crnt = ptr
                 return n[ptr].data
             }
@@ -380,8 +380,8 @@ class AryLinkedList<T> {
     }
     
     func addFirst(obj: T) {
-        var ptr = head
-        var rec = getInsertIndex()
+        let ptr = head
+        let rec = getInsertIndex()
         if rec != NULL {
             head = rec
             crnt = rec
@@ -396,7 +396,7 @@ class AryLinkedList<T> {
             var ptr = head
             while n[ptr].next != NULL {
                 ptr = n[ptr].next
-                var rec = getInsertIndex()
+                let rec = getInsertIndex()
                 if rec != NULL {
                     n[ptr].next = rec
                     crnt = rec
@@ -408,10 +408,10 @@ class AryLinkedList<T> {
     
     func removeFirst() {
         if head != NULL {
-            var ptr = n[head].next
+            let ptr = n[head].next
             deleteIndex(idx: head)
-            head = ptr
-            crnt = ptr
+            head = ptr!
+            crnt = ptr!
         }
     }
     
@@ -493,5 +493,3 @@ class AryLinkedList<T> {
         }
     }
 }
-
- 
