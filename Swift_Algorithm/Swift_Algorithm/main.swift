@@ -10,22 +10,22 @@ import Foundation
 
 // MARK: - 연결리스트 (포인터)
 class LinkedList<T: Equatable> {
-    class Node<T>: Equatable {
-        static func == (lhs: Node<T>, rhs: Node<T>) -> Bool {
+    class Node: Equatable {
+        static func == (lhs: Node, rhs: Node) -> Bool {
             return lhs == rhs
         }
         
         var data: T? // 데이터
-        var next: Node<T>? // 뒤쪽 포인터(다음 노드 참조)
+        var next: Node? // 뒤쪽 포인터(다음 노드 참조)
         
-        init(_ data: T?, _ next: Node<T>?) {
+        init(_ data: T?, _ next: Node?) {
             self.data = data
             self.next = next
         }
     }
     
-    private var head: Node<T>? // 머리 노드
-    private var crnt: Node<T>? // 선택 노드
+    private var head: Node? // 머리 노드
+    private var crnt: Node? // 선택 노드
     
     init() {
         head = nil
@@ -94,7 +94,7 @@ class LinkedList<T: Equatable> {
     }
     
     /// 해당 노드를 삭제
-    func remove(_ p: Node<T>?) {
+    func remove(_ p: Node?) {
         if head != nil {
             if head == p {
                 removeFirst()
@@ -156,25 +156,25 @@ class LinkedList<T: Equatable> {
 }
 
 
-// MARK: - 연결리스트 (tail 추가)
+// MARK: - 연결리스트 (포인터 + tail)
 class LinkedListT<T: Equatable> {
-    class Node<T>: Equatable {
-        static func == (lhs: Node<T>, rhs: Node<T>) -> Bool {
+    class Node: Equatable {
+        static func == (lhs: Node, rhs: Node) -> Bool {
             return lhs == rhs
         }
         
         var data: T? // 데이터
-        var next: Node<T>? // 뒤쪽 포인터(다음 노드 참조)
+        var next: Node? // 뒤쪽 포인터(다음 노드 참조)
         
-        init(_ data: T?, _ next: Node<T>?) {
+        init(_ data: T?, _ next: Node?) {
             self.data = data
             self.next = next
         }
     }
     
-    private var head: Node<T>? // 머리 노드
-    private var crnt: Node<T>? // 선택 노드
-    private var tail: Node<T>? // 꼬리 노드
+    private var head: Node? // 머리 노드
+    private var crnt: Node? // 선택 노드
+    private var tail: Node? // 꼬리 노드
     
     init() {
         head = nil
@@ -246,7 +246,7 @@ class LinkedListT<T: Equatable> {
     }
     
     /// 해당 노드를 삭제
-    func remove(_ p: Node<T>?) {
+    func remove(_ p: Node?) {
         if head != nil {
             if head == p {
                 removeFirst()
@@ -340,32 +340,35 @@ class AryLinkedList<T: Equatable> {
         size = capacity
     }
     
+    /// 다음에 삽입하는 record의 인덱스를 구함
     func getInsertIndex() -> Int {
-        if deleted == NULL {
+        if deleted == NULL { // 삭제할 record가 없음
             if max < size {
                 max++
-                return max
+                return max // 새 record를 사용
             } else {
-                return NULL
+                return NULL // 용량 over(넘침)
             }
         } else {
-            let rec = deleted
-            deleted = n[rec].dnext
+            let rec = deleted // free 리스트에서
+            deleted = n[rec].dnext // 머리 rec을 꺼냄
             return rec
         }
     }
     
+    /// record idx를 free 리스트에 등록
     func deleteIndex(idx: Int) {
-        if deleted == NULL {
-            deleted = idx
-            n[idx].dnext = NULL
+        if deleted == NULL { // 삭제할 record가 없음
+            deleted = idx // idx를 free 리스트의
+            n[idx].dnext = NULL // 머리에 등록
         } else {
-            let rec = deleted
-            deleted = idx
+            let rec = deleted // idx를 free 리스트의
+            deleted = idx // 머리에 삽입
             n[rec].dnext = rec
         }
     }
     
+    /// 노드를 검색
     func search(obj: T) -> T? {
         var ptr = head
         
@@ -379,6 +382,7 @@ class AryLinkedList<T: Equatable> {
         return nil
     }
     
+    /// 머리에 노드를 삽입
     func addFirst(obj: T) {
         let ptr = head
         let rec = getInsertIndex()
@@ -389,6 +393,7 @@ class AryLinkedList<T: Equatable> {
         }
     }
     
+    /// 꼬리에 노드를 삽입
     func addLast(obj: T) {
         if head == NULL {
             addFirst(obj: obj)
@@ -406,6 +411,7 @@ class AryLinkedList<T: Equatable> {
         }
     }
     
+    /// 머리 노드를 삭제
     func removeFirst() {
         if head != NULL {
             let ptr = n[head].next
@@ -415,6 +421,7 @@ class AryLinkedList<T: Equatable> {
         }
     }
     
+    /// 꼬리 노드를 삭제
     func removeLast() {
         if head != NULL {
             if n[head].next == NULL {
@@ -434,6 +441,7 @@ class AryLinkedList<T: Equatable> {
         }
     }
     
+    /// record p를 삭제
     func remove(p: Int) {
         if head != NULL {
             if p == head {
@@ -455,11 +463,12 @@ class AryLinkedList<T: Equatable> {
         }
     }
     
+    /// 선택 노드를 삭제
     func removeCurrentNode() {
         remove(p: crnt)
     }
     
-    
+    /// 모든 노드를 삭제
     func clear() {
         while(head != NULL) {
             removeLast()
@@ -467,7 +476,7 @@ class AryLinkedList<T: Equatable> {
         crnt = NULL
     }
     
-    
+    /// 선택 노드를 하나 뒤쪽으로 이동
     func next() -> Bool {
         if crnt == NULL || n[crnt].next == NULL {
             return false
@@ -476,6 +485,7 @@ class AryLinkedList<T: Equatable> {
         return true
     }
     
+    /// 선택 노드를 출력
     func printCurrentNode() {
         if crnt == NULL {
             print("선택 노드가 없습니다.")
@@ -484,12 +494,174 @@ class AryLinkedList<T: Equatable> {
         }
     }
     
+    /// 모든 노드를 출력
     func dump() {
         var ptr = head
         
         while ptr != NULL {
             print(n[ptr].data)
             ptr = n[ptr].next
+        }
+    }
+}
+
+// MARK: - 원형 이중 연결 리스트
+class DbLinkedList<T: Equatable> {
+    class Node: Equatable {
+        static func == (lhs: Node, rhs: Node) -> Bool {
+            return lhs == rhs
+        }
+        
+        var data: T?
+        var prev: Node?
+        var next: Node?
+        
+        init() {
+            self.data = nil
+            self.prev = self
+            self.next = self
+        }
+        
+        init(_ obj: T, _ prev: Node?, _ next: Node?) {
+            self.data = obj
+            self.prev = prev
+            self.next = next
+        }
+    }
+    
+    var head: Node?
+    var crnt: Node?
+    
+    init() {
+        let node = Node()
+        head = node
+        crnt = node
+    }
+    
+    /// 리스트가 비어있는지 여부
+    func isEmpty() -> Bool {
+        return head?.next == head
+    }
+    
+    /// 노드를 검색
+    func search(obj: T) -> T? {
+        var ptr = head?.next
+        while ptr != head {
+            if obj == ptr?.data {
+                crnt = ptr
+                return ptr?.data
+            }
+            ptr = ptr?.next
+        }
+        return nil
+    }
+    
+    /// 선택 노드를 출력
+    func printCurrentNode() {
+        if isEmpty() {
+            print("선택 노드가 없습니다.")
+        } else {
+            print(crnt?.data)
+        }
+    }
+    
+    /// 모든 노드를 출력
+    func dump() {
+        var ptr = head?.next
+        while ptr != head {
+            print(ptr?.data)
+            ptr = ptr?.next
+        }
+    }
+    
+    /// 모든 노드를 거꾸로 출력
+    func dumpReverse() {
+        var ptr = head?.prev
+        while ptr != head {
+            print(ptr?.data)
+            ptr = ptr?.prev
+        }
+    }
+    
+    /// 선택 노드를 하나 뒤쪽으로 이동
+    func next() -> Bool {
+        if isEmpty() || crnt?.next == head {
+            return false
+        }
+        crnt = crnt?.next
+        return true
+    }
+    
+    /// 선택 노드를 하나 앞쪽으로 이동
+    func prev() -> Bool {
+        if isEmpty() || crnt?.prev == head {
+            return false
+        }
+        crnt = crnt?.prev
+        return true
+    }
+    
+    /// 선택 노드의 바로 뒤에 노드를 삽입
+    func add(obj: T) {
+        let node = Node(obj, crnt, crnt?.next)
+        crnt?.next = node
+        crnt?.next?.prev = node
+        crnt = node
+    }
+    
+    /// 머리에 노드를 삽입
+    func addFirst(obj: T) {
+        crnt = head
+        add(obj: obj)
+    }
+    
+    /// 꼬리에 노드를 삽입
+    func addLast(obj: T) {
+        crnt = head?.prev
+        add(obj: obj)
+    }
+    
+    /// 선택 노드를 삭제
+    func removeCurrentNode() {
+        if !isEmpty() {
+            crnt?.prev?.next = crnt?.next
+            crnt?.next?.prev = crnt?.prev
+            crnt = crnt?.prev
+            if crnt == head {
+                crnt = head?.next
+            }
+        }
+    }
+    
+    /// 노드 p를 삭제
+    func remove(p: Node) {
+        var ptr = head?.next
+        while ptr != head {
+            if ptr == p {
+                crnt = p
+                removeCurrentNode()
+                break
+            }
+            ptr = ptr?.next
+        }
+    }
+    
+    /// 머리 노드를 삭제
+    func removeFirst() {
+        crnt = head?.next
+        removeCurrentNode()
+    }
+    
+    /// 꼬리 노드를 삭제
+    func removeLast() {
+        crnt = head?.prev
+        removeCurrentNode()
+    }
+    
+    /// 모든 노드를 삭제
+    func clear() {
+        while !isEmpty() {
+            removeFirst()
         }
     }
 }
