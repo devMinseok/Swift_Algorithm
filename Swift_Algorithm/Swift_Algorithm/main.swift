@@ -11,7 +11,7 @@ import Foundation
 // MARK: - 손익분기점 (Break-Even-Point)
 func BEP() {
     let nums = readLine()!.split(separator: " ").map { Int($0)! }
-
+    
     /// 고정 비용
     let A = nums[0]
     
@@ -20,12 +20,12 @@ func BEP() {
     
     /// 판매 가격
     let C = nums[2]
-
+    
     if C <= B {
         print(-1)
         return
     }
-
+    
     print((A / (C - B)) + 1) // (고정 비용 / 이익) + 1
 }
 
@@ -121,7 +121,7 @@ func ACMHotel() {
         let nums = readLine()!.split(separator: " ").map { Int($0)! }
         
         let H = nums[0] // 호텔의 층 수
-//        let W = nums[1] // 각 층의 방 수
+        //        let W = nums[1] // 각 층의 방 수
         let N = nums[2] // 몇 번째 손님인지
         
         var Y = N % H
@@ -139,4 +139,102 @@ func ACMHotel() {
     }
 }
 
-ACMHotel()
+//ACMHotel()
+
+// MARK: - 부녀회장이 될테야
+func chairman() {
+    var arr = Array.init(repeating: 0, count: 15)
+    let num = Int(readLine()!)!
+    
+    for _ in 0..<num {
+        let k = Int(readLine()!)! // 층
+        var n = Int(readLine()!)! // 호
+        
+        for i in 0...n {
+            arr[i] = i
+        }
+        
+        var floor = 1
+        while floor <= k {
+            for i in 1...n {
+                arr[i] += arr[i - 1]
+            }
+            floor += 1
+        }
+        
+        print(arr[n])
+    }
+}
+
+//chairman()
+
+// MARK: - 설탕 배달
+func sugar() {
+    var N = Int(readLine()!)!
+    var count = 0
+    
+    while (true) {
+        if (N % 5 == 0) {
+            print(N / 5 + count)
+            return
+        } else if (N < 0) {
+            print(-1)
+            return
+        }
+        N -= 3
+        count += 1
+    }
+    
+}
+
+//sugar()
+
+// MARK: - 큰 수 A + B
+func splitNum(_ str: String) -> [Int] {
+    let intArr = str.map { Int(String($0))! }
+    return intArr
+}
+
+func isALonger(_ a: [Int], _ b: [Int]) -> Bool {
+    return a.count >= b.count ? true : false
+}
+
+func addNum(_ l: [Int], _ s: [Int]) -> String {
+    var long = l, short = s
+    var carry = 0, sum = 0
+    var result = ""
+    func updateResult() {
+        if sum > 9 {
+            carry = 1
+            sum = long.isEmpty ? sum : sum-10
+        }
+        result = String(sum) + result
+        
+    }
+    
+    while !short.isEmpty {
+        sum = long.last! + short.last! + carry
+        carry = 0
+        long.removeLast()
+        short.removeLast()
+        updateResult()
+    }
+    
+    while !long.isEmpty {
+        sum = long.last! + carry
+        carry = 0
+        long.removeLast()
+        updateResult()
+        
+    }
+    return result
+}
+
+/*
+let arr = readLine()!.split(separator: " ")
+let a = splitNum(String(arr[0]))
+let b = splitNum(String(arr[1]))
+let l = isALonger(a,b) ? a : b
+let s = isALonger(a,b) ? b : a
+print(addNum(l,s))
+ */
