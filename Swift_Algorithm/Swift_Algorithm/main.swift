@@ -148,7 +148,7 @@ func chairman() {
     
     for _ in 0..<num {
         let k = Int(readLine()!)! // 층
-        var n = Int(readLine()!)! // 호
+        let n = Int(readLine()!)! // 호
         
         for i in 0...n {
             arr[i] = i
@@ -238,3 +238,35 @@ let l = isALonger(a,b) ? a : b
 let s = isALonger(a,b) ? b : a
 print(addNum(l,s))
  */
+
+// MARK: - Fly me to the Alpha Centauri
+func FAC() {
+    var T = Int(readLine()!)!
+    
+    while T > 0 {
+        let nums = readLine()!.split(separator: " ").map { Int($0)! }
+        let x = nums[0]
+        let y = nums[1]
+        let d = y - x
+        
+        if d < 3 {
+            print(d)
+        } else {
+            var n = Int(sqrt(Double(d)))
+            
+            if d > n * (n + 1) {
+                n += 1
+            }
+            
+            if d > n * n {
+                n *= 2
+            } else {
+                n = n * 2 - 1
+            }
+            print(n)
+        }
+        T -= 1
+    }
+}
+
+FAC()
