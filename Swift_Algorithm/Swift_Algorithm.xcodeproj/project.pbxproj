@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		F212804625E7F171009FCA69 /* Math1.swift in Sources */ = {isa = PBXBuildFile; fileRef = F212804525E7F171009FCA69 /* Math1.swift */; };
 		F21F67D125CA923E00E96C05 /* 06_Sort.swift in Sources */ = {isa = PBXBuildFile; fileRef = F21F67D025CA923E00E96C05 /* 06_Sort.swift */; };
+		F24DA86025EBFAE6000D89E0 /* BruteForce.swift in Sources */ = {isa = PBXBuildFile; fileRef = F24DA85F25EBFAE6000D89E0 /* BruteForce.swift */; };
 		F27338D125DD4C5A0086CB87 /* 10_Tree.swift in Sources */ = {isa = PBXBuildFile; fileRef = F27338D025DD4C5A0086CB87 /* 10_Tree.swift */; };
 		F2762A1224EB689200CB6434 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2762A1124EB689200CB6434 /* main.swift */; };
 		F2762A1924EB76BC00CB6434 /* ColorPaper(E).swift in Sources */ = {isa = PBXBuildFile; fileRef = F2762A1824EB76BC00CB6434 /* ColorPaper(E).swift */; };
@@ -46,6 +47,7 @@
 /* Begin PBXFileReference section */
 		F212804525E7F171009FCA69 /* Math1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Math1.swift; sourceTree = "<group>"; };
 		F21F67D025CA923E00E96C05 /* 06_Sort.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = 06_Sort.swift; sourceTree = "<group>"; };
+		F24DA85F25EBFAE6000D89E0 /* BruteForce.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BruteForce.swift; sourceTree = "<group>"; };
 		F27338D025DD4C5A0086CB87 /* 10_Tree.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = 10_Tree.swift; sourceTree = "<group>"; };
 		F2762A0E24EB689200CB6434 /* Swift_Algorithm */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Swift_Algorithm; sourceTree = BUILT_PRODUCTS_DIR; };
 		F2762A1124EB689200CB6434 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
@@ -84,6 +86,7 @@
 			isa = PBXGroup;
 			children = (
 				F212804525E7F171009FCA69 /* Math1.swift */,
+				F24DA85F25EBFAE6000D89E0 /* BruteForce.swift */,
 			);
 			path = BAEKJOON;
 			sourceTree = "<group>";
@@ -213,6 +216,7 @@
 				F2BAE53725B43FBA00F27789 /* 03_Search.swift in Sources */,
 				F2762A2224EB81A800CB6434 /* LinkedList.swift in Sources */,
 				F2762A2024EB817500CB6434 /* GCD.swift in Sources */,
+				F24DA86025EBFAE6000D89E0 /* BruteForce.swift in Sources */,
 				F21F67D125CA923E00E96C05 /* 06_Sort.swift in Sources */,
 				F2762A1E24EB815600CB6434 /* Fibonacci.swift in Sources */,
 				F27338D125DD4C5A0086CB87 /* 10_Tree.swift in Sources */,
