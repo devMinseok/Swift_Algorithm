@@ -10,6 +10,7 @@
 		F212804625E7F171009FCA69 /* Math1.swift in Sources */ = {isa = PBXBuildFile; fileRef = F212804525E7F171009FCA69 /* Math1.swift */; };
 		F21F67D125CA923E00E96C05 /* 06_Sort.swift in Sources */ = {isa = PBXBuildFile; fileRef = F21F67D025CA923E00E96C05 /* 06_Sort.swift */; };
 		F22F554125EFA452004ED716 /* SortB.swift in Sources */ = {isa = PBXBuildFile; fileRef = F22F554025EFA452004ED716 /* SortB.swift */; };
+		F23BCC8925F2090400EC765F /* BackTracking.swift in Sources */ = {isa = PBXBuildFile; fileRef = F23BCC8825F2090400EC765F /* BackTracking.swift */; };
 		F24DA86025EBFAE6000D89E0 /* BruteForce.swift in Sources */ = {isa = PBXBuildFile; fileRef = F24DA85F25EBFAE6000D89E0 /* BruteForce.swift */; };
 		F27338D125DD4C5A0086CB87 /* 10_Tree.swift in Sources */ = {isa = PBXBuildFile; fileRef = F27338D025DD4C5A0086CB87 /* 10_Tree.swift */; };
 		F2762A1224EB689200CB6434 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2762A1124EB689200CB6434 /* main.swift */; };
@@ -49,6 +50,7 @@
 		F212804525E7F171009FCA69 /* Math1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Math1.swift; sourceTree = "<group>"; };
 		F21F67D025CA923E00E96C05 /* 06_Sort.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = 06_Sort.swift; sourceTree = "<group>"; };
 		F22F554025EFA452004ED716 /* SortB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortB.swift; sourceTree = "<group>"; };
+		F23BCC8825F2090400EC765F /* BackTracking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackTracking.swift; sourceTree = "<group>"; };
 		F24DA85F25EBFAE6000D89E0 /* BruteForce.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BruteForce.swift; sourceTree = "<group>"; };
 		F27338D025DD4C5A0086CB87 /* 10_Tree.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = 10_Tree.swift; sourceTree = "<group>"; };
 		F2762A0E24EB689200CB6434 /* Swift_Algorithm */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Swift_Algorithm; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -90,6 +92,7 @@
 				F212804525E7F171009FCA69 /* Math1.swift */,
 				F24DA85F25EBFAE6000D89E0 /* BruteForce.swift */,
 				F22F554025EFA452004ED716 /* SortB.swift */,
+				F23BCC8825F2090400EC765F /* BackTracking.swift */,
 			);
 			path = BAEKJOON;
 			sourceTree = "<group>";
@@ -226,6 +229,7 @@
 				F2932F5625DE95050049AA3A /* 11_Hash.swift in Sources */,
 				F2762A1224EB689200CB6434 /* main.swift in Sources */,
 				F2AED0C125B82F6D00DD8F5B /* 04_Stack&Queue.swift in Sources */,
+				F23BCC8925F2090400EC765F /* BackTracking.swift in Sources */,
 				F2EB3ABB25B1BEF600A20BFA /* 02_BasicDataStructure.swift in Sources */,
 				F2762A2624EB81DA00CB6434 /* Sort.swift in Sources */,
 				F2C0A4AF25DA64570014B352 /* 09_List.swift in Sources */,
